@@ -27,13 +27,14 @@ unsubscribeFromAuth = null;
             });
         });
       }
-      setCurrentUser({userAuth})
+      else {setCurrentUser({userAuth})}
     });
   }
 
   componentWillUnmount() {
     this.unsubscribeFromAuth();
   }
+
   render() {
     return (
       <div>
@@ -44,16 +45,9 @@ unsubscribeFromAuth = null;
           <Route 
             exact 
             path='/signin' 
-            render={() => 
-            this.props.currentUser ? (
-            <Redirect to='/'/>
-            ) : (
-            <SignInAndSignUp/>
-            )
-            }
+            render={() => this.props.currentUser ? (<Redirect to='/'/>) : (<SignInAndSignUp/>)}
           />
         </Switch>
-        
       </div>
     );
   }
